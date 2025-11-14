@@ -115,7 +115,7 @@
 
     h1 {
       font-family: 'ptg', sans-serif;
-      font-size: clamp(6rem, 25vw, 10rem);
+      font-size: clamp(5rem, 25vw, 9rem);
       color: #fff;
       line-height: 0.9;
       text-shadow: 0 0 10px rgba(233, 30, 99, 0.5);
@@ -140,7 +140,7 @@
       font-family: 'ptg', sans-serif;
       color: var(--accent);
       margin-bottom: 1px;
-      font-size: clamp(3rem, 5vw, 5rem); 
+      font-size: clamp(2.25rem, 5vw, 4.5rem); 
       text-shadow: 0 0 5px rgba(233, 30, 99, 0.3);
       position: relative;
       display: inline-block;
@@ -293,8 +293,7 @@
       transform: scale(1.05);
       box-shadow: 0 8px 20px rgba(233, 30, 99, 0.6);
     }
-
-    /* 动画定义 */
+    
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
@@ -348,7 +347,6 @@
 </head>
 
 <body>
-  <!-- 心形飘落效果 -->
   <div class="hearts" id="hearts"></div>
   
   <div id='intro-modal'>
@@ -363,7 +361,7 @@
     </div>
   </header>
 
-  <main>
+<main>
     <section>
       <div class='container'>
         <h2>Любовные похождения</h2>
@@ -443,7 +441,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const startBtn = document.getElementById('start-btn');
   const heartsContainer = document.getElementById('hearts');
 
-  // 创建心形飘落效果
   function createHearts() {
     const heartCount = 10;
     for (let i = 0; i < heartCount; i++) {
@@ -455,7 +452,6 @@ document.addEventListener('DOMContentLoaded', () => {
         heart.style.opacity = Math.random() * 0.5 + 0.3;
         heartsContainer.appendChild(heart);
         
-        // 移除心形元素
         setTimeout(() => {
           heart.remove();
         }, 8000);
@@ -463,19 +459,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
   
-  // 定期创建心形
   setInterval(createHearts, 4000);
-  createHearts(); // 初始创建
+  createHearts(); 
 
   function startExperience() {
-    // 尝试播放背景音乐
     bgMusic.play()
       .then(() => {
         introModal.style.display = 'none';
       })
       .catch((err) => {
         console.warn('Не удалось воспроизвести аудио:', err);
-        // 即使音乐无法播放，也继续显示内容
         introModal.style.display = 'none';
       });
   }
@@ -501,7 +494,7 @@ document.addEventListener('DOMContentLoaded', () => {
   modal.addEventListener('click', (e) => {
     if (e.target === modal) closeModal();
   });
-
+  
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal.style.display === 'flex') {
       closeModal();
